@@ -11,7 +11,7 @@ const HeaderBox = styled.div`
   background-color:#3b434b;
   align-items:center;
     font: 'Open Sans', sans-serif;
-
+    position:fixed;
 `
 
 const ImageContainer = styled.div`
@@ -26,6 +26,7 @@ const Options = styled.ul`
     justify-content:flex-end;
     align-items:center;
     width:70%;
+    height:100%;
 `
 
 const Title = styled.div`
@@ -37,7 +38,7 @@ const Title = styled.div`
 `
 
 const Option = styled.li`
-    color:white;
+    color:${p=> p.color || 'white'};
     font-size:1.5rem;
     white-space: nowrap;
 
@@ -47,7 +48,22 @@ const Nav = styled.nav`
     margin-left:20%;
     width:100%;
     gap:15%;
+    height:100%;
 `
+
+
+const HeaderOpt = ({children}) =>{
+
+    const [color, setColor] = React.useState(null);
+    return(
+        <Option
+            onMouseEnter={()=>{setColor('red')}}
+            onMouseLeave={()=>{setColor(null)}}
+            color={color}>
+            {children}
+        </Option>
+    )
+}
 
 
 export const Header = (props) =>{
@@ -62,9 +78,9 @@ export const Header = (props) =>{
           <Nav> 
                 <Options style={{listStyleType:'none'}}>
         
-                    <Link to = '/' style={{textDecoration:'none'}}> <Option> Home </Option> </Link>
-                    <Link to = '/servicos-contratados' style={{textDecoration:'none'}}> <Option> Serviços contratados </Option> </Link>
-                    <Link to = '/meus-servicos' style={{textDecoration:'none'}}> <Option> Meus serviços </Option> </Link>
+                    <Link to = '/' style={{textDecoration:'none'}}> <HeaderOpt> Home </HeaderOpt> </Link>
+                    <Link to = '/servicos-contratados' style={{textDecoration:'none'}}> <HeaderOpt> Serviços contratados </HeaderOpt> </Link>
+                    <Link to = '/meus-servicos' style={{textDecoration:'none'}}> <HeaderOpt> Meus serviços </HeaderOpt> </Link>
 
                 </Options>
           </Nav>
