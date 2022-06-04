@@ -1,59 +1,86 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { FaStar } from 'react-icons/fa';
+import { ServiceCardDetails } from './serviceCardDetails';
+import { ConfirmPurchasePopup } from './confirmPurchasePopup';
 
 
 const CardWrapper = styled.div`
     display:flex;
     flex-direction:column;
-    height:150px;
+    height:${p=> p.isDisabled ? '100px' : '200px'};
     background:#edf0ee;
     margin-bottom:15px;
     border-radius:10px;
     border:1px solid black;
     border-left 20px solid red;
-`
+    cursor: ${p => p.isDisabled ? undefined : 'pointer'};
 
-
-const ValueField = styled.div`
-    margin-left:5%;
 `
 
 const TitleField = styled.div`
     display:flex;
     width:100%;
-    justify-content:center;
-    font-size:20px;
+    font-size:25px;
+    font-weight:bold;
     width:100%;
+    justify-content:center;
 `
 
 
-const AddressField = styled.div`
-    marin-top:1%:
+const CategoryField = styled.div`
+    font-size:15px;
+    align-self:flex-end;
+    margin-left:50px;
+    font-weight:400;
+`
+
+const DescriptionField = styled.div`
+  margin-top:3%;
+  height:50%;
+  overflow:hidden;
+  font-size:20px;
 `
 
 
 export const ServiceCard = (props) =>{
 
-    //titulo, descricão, anunciante, endereço, avaliação, valor, 
+  const [showDetails, setShowDetails] = React.useState(false);
+
     return (
-      <CardWrapper>
+      <> 
+      { 
+        !showDetails ?
+          <CardWrapper onClick={() => !props.isDisabled && setShowDetails(true)} isDisabled={props.isDisabled}>
+            <TitleField>
+                {props.name}
+                {/* <ValueField>5 <FaStar  color = 'yellow'/> </ValueField> */}
+            <CategoryField>{props.category}</CategoryField>
 
-        <TitleField>
-            Lavagem de veículos
-            <ValueField>5 <FaStar/> </ValueField>
-        </TitleField>
-      Melhor lavagem nao sei oq de ca      Melhor lavagem nao sei oq de carros daquuilfaspkg sdg kdnjssadkgasdog sadgjasdoigjasdoigjasdoi sd
-      Melhor lavagem nao sei oq de carros daquuilfaspkg sdg kdnjssadkgasdog sadgjasdoigjasdoigjasdoi sd
-rros daquuilfaspkg sdg kdnjssadkgasdog sadgjasdoigjasdoigjasdoi sd
-  
-        <AddressField> 
-        Rua Dante Larentis, 312 Bento Gonçalves, RS
+            </TitleField>
+          {!props.isDisabled && 
+            <div style={{marginLeft:'3%', height: '100%'}}> 
+            <DescriptionField> 
 
-        </AddressField>
-        <ValueField>
-        R$ 700,00
-      </ValueField>
-      </CardWrapper>
+            {props.description}
+
+            </DescriptionField>
+          
+            </div>
+          }
+          
+        </CardWrapper>
+        :
+        <ServiceCardDetails 
+        name={props.name}
+        description={props.description}
+        value={props.value}
+        address={props.address}
+        onClose={()=>{setShowDetails(false)}}
+        />
+        
+        }
+        
+      </>
     );
   }

@@ -1,7 +1,8 @@
+import axios from 'axios';
 import * as React from 'react';
 import styled from 'styled-components';
 import { ServiceCard } from '../components/serviceCard';
-
+import {services} from '../services';
 const Wrapper = styled.div`
   width:100%:
   height:100%;
@@ -15,23 +16,36 @@ const CardList = styled.div`
   width:60%;
   margin-left:5%;
   flex-direction:column;
-  gap:10%;
+  gap:3%;
   margin-top:10%;
 `
+ //Id = id;
+    // NomeServico = nomeServico;
+    // Descricao = descricao;
+    // Categoria = categoria;
+    // Valor = valor;
+    //endereço
+    //usuario
 
+    // const cardList = axios.get()
+    
 export const Home = (props) =>{
-    return (
+  const {id} = React.useId();  
+  return (
       <Wrapper> 
-        <CardList>
-          <ServiceCard/>
-          <ServiceCard/>
-          <ServiceCard/>
-          <ServiceCard/>
-          <ServiceCard/>
-          <ServiceCard/>
-          
-
+         
+          <CardList>
+          {services.map(card =>(
+            <ServiceCard 
+              name={card.nomeServico} 
+              description={card.descricao } 
+              category = {card.categoria}
+              value={card.valor}
+              key={id}
+            />
+          ))}
         </CardList>
+ 
       </Wrapper>
     );
   }
