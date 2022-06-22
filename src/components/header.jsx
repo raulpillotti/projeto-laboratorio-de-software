@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 
 
 
@@ -67,23 +67,42 @@ const HeaderOpt = ({children}) =>{
 
 
 export const Header = (props) =>{
+
+    const [showNav, setShowNav] = React.useState(false);
+    const path = useLocation();
+    React.useEffect(()=>{
+
+        console.log('useeffect')
+        if(window.location.href != 'http://localhost:3000/'){
+            setShowNav(true);
+        }else{
+            setShowNav(false);
+        }
+         
+    },[path])
+
     return (
+        <> 
       <HeaderBox>
           
           <Title> 
             <p style = {{fontWeight:700}}>CASSIO  </p>
             <p style = {{ fontWeight:100, fontSize:'3.5rem'}}>SERVIÇOS</p>
           </Title>
-        
+          { showNav && 
           <Nav> 
                 <Options style={{listStyleType:'none'}}>
         
-                    <Link to = '/' style={{textDecoration:'none'}}> <HeaderOpt> Home </HeaderOpt> </Link>
+                    <Link to = '/home' style={{textDecoration:'none'}}> <HeaderOpt> Home </HeaderOpt> </Link>
                     <Link to = '/servicos-contratados' style={{textDecoration:'none'}}> <HeaderOpt> Serviços contratados </HeaderOpt> </Link>
                     <Link to = '/meus-servicos' style={{textDecoration:'none'}}> <HeaderOpt> Meus serviços </HeaderOpt> </Link>
 
                 </Options>
           </Nav>
+        }
       </HeaderBox>
+
+      </>
+    
     );
   }

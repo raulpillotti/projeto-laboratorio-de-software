@@ -30,6 +30,10 @@ const CardList = styled.div`
     // const cardList = axios.get()
     
 export const Home = (props) =>{
+  axios.get("http://localhost:5000/Api/Servicos", {headers:{ "Access-Control-Allow-Origin": "*",}})
+  .then(r => console.log("requisicao", r))
+  .catch(err => console.log(err))
+  
   const {id} = React.useId();  
   return (
       <Wrapper> 
