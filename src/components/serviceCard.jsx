@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FaStar } from 'react-icons/fa';
 import { ServiceCardDetails } from './serviceCardDetails';
 import { ConfirmPurchasePopup } from './confirmPurchasePopup';
+import { Button, Rating, Typography } from '@mui/material';
 
 
 const CardWrapper = styled.div`
@@ -42,10 +43,16 @@ const DescriptionField = styled.div`
   font-size:20px;
 `
 
+const ValueField = styled.div`
+  margin-left:2%;
+`
+
 
 export const ServiceCard = (props) =>{
 
   const [showDetails, setShowDetails] = React.useState(false);
+
+  const evaluation = 5; //get para média de avaliações de um usuário
 
     return (
       <> 
@@ -54,7 +61,16 @@ export const ServiceCard = (props) =>{
           <CardWrapper onClick={() => !props.isDisabled && setShowDetails(true)} isDisabled={props.isDisabled}>
             <TitleField>
                 {props.name}
-                {/* <ValueField>5 <FaStar  color = 'yellow'/> </ValueField> */}
+                <ValueField>
+                <Rating
+                  readOnly
+                  name="simple-controlled"
+                  value={evaluation}
+                  // onChange={(event, val) => {
+                  //   setEvaluation(val);
+                  // }}
+                />
+                 </ValueField>
             <CategoryField>{props.category}</CategoryField>
 
             </TitleField>

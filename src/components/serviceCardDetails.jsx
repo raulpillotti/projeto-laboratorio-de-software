@@ -71,7 +71,6 @@ const confirmEvaluation = () =>{
   //post para avaliação
 }
 
-// const vals = get da media de avaliação do usuário 
     return (
       <> 
       {showBuyModal ? 
@@ -102,7 +101,6 @@ const confirmEvaluation = () =>{
               <Typography component="legend">Avaliar usuário</Typography>
                   <Rating
                   name="simple-controlled"
-                  //value vai ser um get da médias de avaliações daquele usuário
                   value={evaluation}
                   onChange={(event, val) => {
                     setEvaluation(val);
