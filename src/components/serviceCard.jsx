@@ -77,6 +77,7 @@ export const ServiceCard = (props) =>{
         value={props.value}
         address={props.address}
         onClose={()=>{setShowDetails(false)}}
+        isSigned={props.isSigned}
         />
         
         }

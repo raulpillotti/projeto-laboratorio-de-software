@@ -35,7 +35,7 @@ export const ServicosContratados = (props) =>{
           category = {card.categoria}
           value={card.valor}
           key={id}
-          isDisabled
+          isSigned
         />
         ))}
       </CardList>

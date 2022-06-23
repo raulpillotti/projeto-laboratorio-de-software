@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { FaWindowMinimize } from 'react-icons/fa';
-import { Button } from '@mui/material';
+import { Button, Rating, Typography } from '@mui/material';
 import { ConfirmPurchasePopup } from './confirmPurchasePopup';
 
 export const ServiceCardDetails = (props) =>{
@@ -59,12 +59,19 @@ const BuyButton = styled.div`
 //vai vir como prop
 const address = 'Rua Dante Larentis, Cidade Alta, 312 - Bento Gonçalves, RS'
 const [showBuyModal, setShowBuyModal] = React.useState(false);
+const [evaluation, setEvaluation] = React.useState(0);
 
 const confirmPurchase = () =>{
   //POST PRO USUARIO
   setShowBuyModal(false)
   console.log('TESTEEE')
 }
+
+const confirmEvaluation = () =>{
+  //post para avaliação
+}
+
+// const vals = get da media de avaliação do usuário 
     return (
       <> 
       {showBuyModal ? 
@@ -85,9 +92,26 @@ const confirmPurchase = () =>{
           <ValueField>{`R$${props.value},00`}</ValueField>
 
           <BuyButton>
-            <Button onClick={()=>{setShowBuyModal(true)}} color='success' variant = 'contained'>
-              COMPRAR
-            </Button>
+
+            {!props.isSigned ? 
+             <Button onClick={()=>{setShowBuyModal(true)}} color='success' variant = 'contained'>
+             COMPRAR
+           </Button>
+           :
+            <>
+              <Typography component="legend">Avaliar usuário</Typography>
+                  <Rating
+                  name="simple-controlled"
+                  //value vai ser um get da médias de avaliações daquele usuário
+                  value={evaluation}
+                  onChange={(event, val) => {
+                    setEvaluation(val);
+                  }}
+                />
+           </>
+          }
+        
+           
           </BuyButton>
         </DetailsWrapper>
       }
