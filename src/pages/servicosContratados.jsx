@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { ServiceCard } from '../components/serviceCard';
-import {services} from '../services';
 import { Button } from '@mui/material';
 import { NewServiceForm } from '../components/newServiceForm';
 const Wrapper = styled.div`
@@ -23,7 +22,7 @@ const CardList = styled.div`
 
 export const ServicosContratados = (props) =>{
   const {id} = React.useId()
-  const myServices = [...services].splice(0, 2)
+  const myServices = []
 
     return (
       <Wrapper>       
@@ -39,8 +38,7 @@ export const ServicosContratados = (props) =>{
         />
         ))}
       </CardList>
-    
-     
+
    </Wrapper>
     );
   }

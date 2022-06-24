@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { ServiceCard } from '../components/serviceCard';
-import {services} from '../services';
 import { Button } from '@mui/material';
 import { NewServiceForm } from '../components/newServiceForm';
 
@@ -37,7 +36,8 @@ export const MeusServicos = (props) =>{
   const [creatingNewService, setCreatingNewService] = React.useState(false);
 
     const {id} = React.useId()
-    const myServices = [...services].splice(0, 2)
+    const myServices = []
+
     return (
       <Wrapper> 
         {creatingNewService ? 

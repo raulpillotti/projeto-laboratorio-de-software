@@ -27,14 +27,24 @@ export const NewServiceForm = (props) =>{
 
     const name = React.useRef('');
     const description = React.useRef('');
-    const value = React.useRef('');
+    const value = React.useRef(0);
     const address = React.useRef('');
     const category = React.useRef();
+    const user = "8988311a-04bf-4ef8-931d-63fb540745fb"
 
 
     const publishService = () =>{
+        const newService = {
+            UsuarioId: user,
+            NomeServico:name.current,
+            Descricao:description.current,
+            Valor:Number(value.current),
+            Categoria:category.current.target.value
+        }
 
-        //POST PRO BACKEND
+        console.log(newService)
+
+        axios.post("http://localhost:5000/Api/Servicos", newService, {headers:{ "Access-Control-Allow-Origin": "*",}}).catch(err => console.log(err))
 
         name.current = '';
         description.current = '';

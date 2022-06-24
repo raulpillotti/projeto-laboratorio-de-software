@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as React from 'react';
 import styled from 'styled-components';
 import { ServiceCard } from '../components/serviceCard';
-import {services} from '../services';
+
 const Wrapper = styled.div`
   width:100%:
   height:100%;
@@ -19,22 +19,17 @@ const CardList = styled.div`
   gap:3%;
   margin-top:10%;
 `
- //Id = id;
-    // NomeServico = nomeServico;
-    // Descricao = descricao;
-    // Categoria = categoria;
-    // Valor = valor;
-    //endereço
-    //usuario
-
-    // const cardList = axios.get()
     
 export const Home = (props) =>{
+
+  const [services, setServices] = React.useState([]);
+
   axios.get("http://localhost:5000/Api/Servicos", {headers:{ "Access-Control-Allow-Origin": "*",}})
-  .then(r => console.log("requisicao", r))
+  .then(r => setServices(r.data))
   .catch(err => console.log(err))
-  
+
   const {id} = React.useId();  
+  
   return (
       <Wrapper> 
          
