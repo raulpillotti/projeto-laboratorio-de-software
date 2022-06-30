@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import {Link, useLocation} from 'react-router-dom';
+import { Button } from '@mui/material';
 
 
 
@@ -70,6 +71,10 @@ export const Header = (props) =>{
 
     const [showNav, setShowNav] = React.useState(false);
     const path = useLocation();
+
+    const logout = () =>{
+        window.location = 'http://localhost:3000'
+    }
     React.useEffect(()=>{
 
         console.log('useeffect')
@@ -96,7 +101,9 @@ export const Header = (props) =>{
                     <Link to = '/home' style={{textDecoration:'none'}}> <HeaderOpt> Home </HeaderOpt> </Link>
                     <Link to = '/servicos-contratados' style={{textDecoration:'none'}}> <HeaderOpt> Serviços contratados </HeaderOpt> </Link>
                     <Link to = '/meus-servicos' style={{textDecoration:'none'}}> <HeaderOpt> Meus serviços </HeaderOpt> </Link>
-
+                    <div style={{}}>
+                        <Button onClick={logout} size='large' color = 'error'>Logout</Button>
+                    </div>
                 </Options>
           </Nav>
         }

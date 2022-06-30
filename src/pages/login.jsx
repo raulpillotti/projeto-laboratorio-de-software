@@ -24,23 +24,50 @@ export const Login = (props) =>{
     const email = React.useRef('');
     const password = React.useRef('');
 
+    const [throwError, setThrowError] = React.useState(false);
+
     const login = () =>{
+
+      // axios.get("http://localhost:5000/Api/Login", {params:{email:email, senha:password}}, {headers:{ "Access-Control-Allow-Origin": "*",}})
+      // .then(r => {
+
+        const teste = email.current === 'admin' && password.current === 'admin';
+        if(teste){
+          window.location = "http://localhost:3000/home";
+        }else{
+          setThrowError(true);
+        }
+      // })
+      // .catch(err => console.log(err))
     }
 
   return (
       <Wrapper> 
+     
         <Inputs> 
+   
           <FormControl fullWidth style={{marginBottom:'5%'}}>
                 <InputLabel htmlFor={'email'}>{'Email'}</InputLabel>
-                    <Input onChange={(e)=> {email.current = e.target.value}} id={'email'}/>
+                    <Input onChange={(e)=> {
+                      if(throwError) setThrowError(false);
+                      email.current = e.target.value
+                    }} id={'email'}/>
             </FormControl>
 
             <FormControl fullWidth>
                 <InputLabel fullWidth htmlFor={'senha'}>{'senha'}</InputLabel >
-                    <Input type='password' onChange={(e)=> {password.current = e.target.value}} id={'senha'} fullWidth/>
+                    <Input type='password' onChange={(e)=> {
+                      if (throwError) setThrowError(false);
+                      password.current = e.target.value
+                      }} id={'senha'} fullWidth/>
             </FormControl>
 
-        <Link to = '/home' style={{textDecoration:'none'}}> <Button onClick={login()}>Ir</Button> </Link>
+        <Button onClick={login}>Ir</Button> 
+        {throwError &&
+          <div style={{height:'20%'}}> 
+            <p style={{color:'red'}}>Usuário ou senha inválidos</p>
+          </div>
+        }
         </Inputs>
  
       </Wrapper>
