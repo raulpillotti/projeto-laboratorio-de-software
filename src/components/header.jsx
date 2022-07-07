@@ -13,6 +13,7 @@ const HeaderBox = styled.div`
   align-items:center;
     font: 'Open Sans', sans-serif;
     position:fixed;
+    z-index:10;
 `
 
 const ImageContainer = styled.div`
