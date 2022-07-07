@@ -25,7 +25,7 @@ export const Home = (props) =>{
   const [services, setServices] = React.useState([]);
 
   axios.get("http://localhost:5000/Api/Servicos", {headers:{ "Access-Control-Allow-Origin": "*",}})
-  .then(r => setServices(r.data))
+  .then(r => setServices(r.data.sort((a, b) => a.nomeServico.localeCompare(b.nomeServico))))
   .catch(err => console.log(err))
 
   const {id} = React.useId();  

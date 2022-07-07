@@ -41,7 +41,7 @@ export const NewServiceForm = (props) =>{
             Valor:Number(value.current),
             Categoria:category.current.target.value
         }
-
+        console.log(newService)
         axios.post("http://localhost:5000/Api/Servicos", newService, {headers:{ "Access-Control-Allow-Origin": "*",}}).catch(err => console.log(err))
 
         name.current = '';
