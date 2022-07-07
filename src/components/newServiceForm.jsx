@@ -5,7 +5,7 @@ import { FormControl, InputLabel, Input, Select, MenuItem, Button } from '@mui/m
 
 const Box = styled.div`
   width:70%;
-  height: 500px;
+  height: 400px;
   align-self:center;
   display:flex;
   flex-direction:column;
@@ -48,6 +48,7 @@ export const NewServiceForm = (props) =>{
         description.current = '';
         value.current = '';
         address.current = '';
+        
         category.current = '';
 
         props.onClose();
@@ -65,10 +66,10 @@ export const NewServiceForm = (props) =>{
                     <Input onChange={(e)=> {description.current = e.target.value}} id={'Descrição'} fullWidth />
             </FormControl>
 
-            <FormControl fullWidth>
+            {/* <FormControl fullWidth>
                 <InputLabel htmlFor={'Endereço'}>{'Endereço'}</InputLabel>
                     <Input onChange={(e)=> {address.current = e.target.value}} id={'Endereço'} fullWidth />
-            </FormControl>
+            </FormControl> */}
 
             <FormControl fullWidth>
                 <InputLabel htmlFor='Valor'>{'Valor'}</InputLabel>
