@@ -1,7 +1,7 @@
-import * as React from 'react'
-import styled from 'styled-components'
-import { Link, useLocation } from 'react-router-dom'
-import { Button } from '@mui/material'
+import * as React from 'react';
+import styled from 'styled-components';
+import { Link, useLocation } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 const HeaderBox = styled.div`
 	display: flex;
@@ -12,11 +12,11 @@ const HeaderBox = styled.div`
 	font: 'Open Sans', sans-serif;
 	position: fixed;
 	z-index: 10;
-`
+`;
 
 const ImageContainer = styled.div`
 	display: flex;
-`
+`;
 
 const Options = styled.ul`
 	display: flex;
@@ -26,7 +26,7 @@ const Options = styled.ul`
 	align-items: center;
 	width: 70%;
 	height: 100%;
-`
+`;
 
 const Title = styled.div`
 	color: white;
@@ -34,53 +34,53 @@ const Title = styled.div`
 	align-items: center;
 	font-size: 4.5rem;
 	gap: 2%;
-`
+`;
 
 const Option = styled.li`
 	color: ${(p) => p.color || 'white'};
 	font-size: 1.5rem;
 	white-space: nowrap;
-`
+`;
 const Nav = styled.nav`
 	display: flex;
 	margin-left: 20%;
 	width: 100%;
 	gap: 15%;
 	height: 100%;
-`
+`;
 
 const HeaderOpt = ({ children }) => {
-	const [color, setColor] = React.useState(null)
+	const [color, setColor] = React.useState(null);
 	return (
 		<Option
 			onMouseEnter={() => {
-				setColor('red')
+				setColor('red');
 			}}
 			onMouseLeave={() => {
-				setColor(null)
+				setColor(null);
 			}}
 			color={color}
 		>
 			{children}
 		</Option>
-	)
-}
+	);
+};
 
 export const Header = (props) => {
-	const [showNav, setShowNav] = React.useState(false)
-	const path = useLocation()
+	const [showNav, setShowNav] = React.useState(false);
+	const path = useLocation();
 
 	const logout = () => {
-		window.location = 'http://localhost:3000'
-	}
+		window.location = 'http://localhost:3000';
+	};
 	React.useEffect(() => {
-		console.log('useeffect')
+		console.log('useeffect');
 		if (window.location.href != 'http://localhost:3000/') {
-			setShowNav(true)
+			setShowNav(true);
 		} else {
-			setShowNav(false)
+			setShowNav(false);
 		}
-	}, [path])
+	}, [path]);
 
 	return (
 		<>
@@ -114,5 +114,5 @@ export const Header = (props) => {
 				)}
 			</HeaderBox>
 		</>
-	)
-}
+	);
+};

@@ -1,8 +1,8 @@
-import * as React from 'react'
-import styled from 'styled-components'
-import { ServiceCard } from '../components/serviceCard'
-import { Button } from '@mui/material'
-import { NewServiceForm } from '../components/newServiceForm'
+import * as React from 'react';
+import styled from 'styled-components';
+import { ServiceCard } from '../components/serviceCard';
+import { Button } from '@mui/material';
+import { NewServiceForm } from '../components/newServiceForm';
 
 const Wrapper = styled.div`
   width:100%:
@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   flex-direction:column;
   justify-content:center;
   overflow:auto;
-`
+`;
 const CardList = styled.div`
 	display: flex;
 	width: 60%;
@@ -19,29 +19,29 @@ const CardList = styled.div`
 	gap: 3%;
 	margin-top: 10%;
 	align-self: center;
-`
+`;
 
-const CreateService = styled.div``
+const CreateService = styled.div``;
 
 const CreateNewServiceButton = styled.div`
 	display: flex;
 	width: 60%;
 	align-self: center;
 	flex-direction: column;
-`
+`;
 
 export const MeusServicos = (props) => {
-	const [creatingNewService, setCreatingNewService] = React.useState(false)
+	const [creatingNewService, setCreatingNewService] = React.useState(false);
 
-	const { id } = React.useId()
-	const myServices = []
+	const { id } = React.useId();
+	const myServices = [];
 
 	return (
 		<Wrapper>
 			{creatingNewService ? (
 				<NewServiceForm
 					onClose={() => {
-						setCreatingNewService(false)
+						setCreatingNewService(false);
 					}}
 				/>
 			) : (
@@ -62,7 +62,7 @@ export const MeusServicos = (props) => {
 						<Button
 							variant='contained'
 							onClick={() => {
-								setCreatingNewService(true)
+								setCreatingNewService(true);
 							}}
 						>
 							Criar novo serviço
@@ -71,5 +71,5 @@ export const MeusServicos = (props) => {
 				</>
 			)}
 		</Wrapper>
-	)
-}
+	);
+};

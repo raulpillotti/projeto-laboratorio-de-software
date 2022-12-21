@@ -1,7 +1,7 @@
-import * as React from 'react'
-import styled from 'styled-components'
-import { Button } from '@mui/material'
-import { FaWindowClose } from 'react-icons/fa'
+import * as React from 'react';
+import styled from 'styled-components';
+import { Button } from '@mui/material';
+import { FaWindowClose } from 'react-icons/fa';
 
 const ModalBox = styled.div`
 	width: 700px;
@@ -11,24 +11,24 @@ const ModalBox = styled.div`
 	background: #edf0ee;
 	display: flex;
 	flex-direction: column;
-`
+`;
 const MainTitleText = styled.div`
 	width: 100%;
 	font-size: 20px;
 	margin-left: 3%;
 	height: 80%;
-`
+`;
 
 const ConfirmButton = styled.div`
 	align-self: flex-end;
 	margin-right: 2%;
 	margin-bottom: 1%;
-`
+`;
 const QuitButton = styled.div`
 	margin-right: 0.3%;
 	margin-top: 0.3%;
 	align-self: flex-end;
-`
+`;
 
 export const ConfirmPurchasePopup = (props) => {
 	return (
@@ -38,7 +38,7 @@ export const ConfirmPurchasePopup = (props) => {
 					color='error'
 					variant='contained'
 					onClick={() => {
-						props.onClose()
+						props.onClose();
 					}}
 				>
 					<FaWindowClose />{' '}
@@ -50,12 +50,12 @@ export const ConfirmPurchasePopup = (props) => {
 					color='success'
 					variant='contained'
 					onClick={() => {
-						props.onConfirm()
+						props.onConfirm();
 					}}
 				>
 					Confirmar
 				</Button>
 			</ConfirmButton>
 		</ModalBox>
-	)
-}
+	);
+};

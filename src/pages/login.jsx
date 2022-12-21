@@ -1,8 +1,8 @@
-import axios from 'axios'
-import * as React from 'react'
-import styled from 'styled-components'
-import { FormControl, InputLabel, Input, Select, MenuItem, Button } from '@mui/material'
-import { Link } from 'react-router-dom'
+import axios from 'axios';
+import * as React from 'react';
+import styled from 'styled-components';
+import { FormControl, InputLabel, Input, Select, MenuItem, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
   width:100%:
@@ -10,33 +10,32 @@ const Wrapper = styled.div`
   display:flex;
   justify-content:center;
   overflow:auto;
-`
+`;
 const Inputs = styled.div`
 	margin-top: 10%;
 	display: flex;
 	width: 30%;
 	flex-direction: column;
-`
+`;
 
 export const Login = (props) => {
-	const email = React.useRef('')
-	const password = React.useRef('')
-
-	const [throwError, setThrowError] = React.useState(false)
+	const [email, setEmail] = React.useState('');
+	const [password, setPassword] = React.useState('');
+	const [throwError, setThrowError] = React.useState(false);
 
 	const login = () => {
 		// axios.get("http://localhost:5000/Api/Login", {params:{email:email, senha:password}}, {headers:{ "Access-Control-Allow-Origin": "*",}})
 		// .then(r => {
 
-		const teste = email.current === 'admin' && password.current === 'admin'
+		const teste = email.current === 'admin' && password.current === 'admin';
 		if (teste) {
-			window.location = 'http://localhost:3000/home'
+			window.location = 'http://localhost:3000/home';
 		} else {
-			setThrowError(true)
+			setThrowError(true);
 		}
 		// })
 		// .catch(err => console.log(err))
-	}
+	};
 
 	return (
 		<Wrapper>
@@ -45,8 +44,8 @@ export const Login = (props) => {
 					<InputLabel htmlFor={'email'}>{'Email'}</InputLabel>
 					<Input
 						onChange={(e) => {
-							if (throwError) setThrowError(false)
-							email.current = e.target.value
+							if (throwError) setThrowError(false);
+							setEmail(e.target.value);
 						}}
 						id={'email'}
 					/>
@@ -59,8 +58,8 @@ export const Login = (props) => {
 					<Input
 						type='password'
 						onChange={(e) => {
-							if (throwError) setThrowError(false)
-							password.current = e.target.value
+							if (throwError) setThrowError(false);
+							setPassword(e.target.value);
 						}}
 						id={'senha'}
 						fullWidth
@@ -75,5 +74,5 @@ export const Login = (props) => {
 				)}
 			</Inputs>
 		</Wrapper>
-	)
-}
+	);
+};

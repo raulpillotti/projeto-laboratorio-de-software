@@ -1,7 +1,7 @@
-import axios from 'axios'
-import * as React from 'react'
-import styled from 'styled-components'
-import { FormControl, InputLabel, Input, Select, MenuItem, Button } from '@mui/material'
+import axios from 'axios';
+import * as React from 'react';
+import styled from 'styled-components';
+import { FormControl, InputLabel, Input, Select, MenuItem, Button } from '@mui/material';
 
 const Box = styled.div`
 	width: 70%;
@@ -14,45 +14,45 @@ const Box = styled.div`
 	border-radius: 10px;
 	margin-top: 10%;
 	gap: 5%;
-`
+`;
 const Buttons = styled.div`
 	display: flex;
 	align-self: center;
 	gap: 2%;
-`
+`;
 
 export const NewServiceForm = (props) => {
-	const name = React.useRef('')
-	const description = React.useRef('')
-	const value = React.useRef(0)
-	const address = React.useRef('')
-	const category = React.useRef()
-	const user = '8988311a-04bf-4ef8-931d-63fb540745fb'
+	const [name, setName] = React.useState('');
+	const [description, setDescription] = React.useState('');
+	const [value, setValue] = React.useState('');
+	const [address, setAddress] = React.useState('');
+	const [category, setCategory] = React.useState();
+
+	const user = '8988311a-04bf-4ef8-931d-63fb540745fb';
 
 	const publishService = () => {
 		const newService = {
 			UsuarioId: user,
-			NomeServico: name.current,
-			Descricao: description.current,
-			Valor: Number(value.current),
-			Categoria: category.current.target.value,
-		}
-		console.log(newService)
+			NomeServico: name,
+			Descricao: description,
+			Valor: Number(value),
+			Categoria: category.target.value,
+		};
+		console.log(newService);
 		axios
 			.post('http://localhost:5000/Api/Servicos', newService, {
 				headers: { 'Access-Control-Allow-Origin': '*' },
 			})
-			.catch((err) => console.log(err))
+			.catch((err) => console.log(err));
 
-		name.current = ''
-		description.current = ''
-		value.current = ''
-		address.current = ''
+		setName('');
+		setDescription('');
+		setValue('');
+		setAddress('');
+		setCategory(undefined);
 
-		category.current = ''
-
-		props.onClose()
-	}
+		props.onClose();
+	};
 
 	return (
 		<Box>
@@ -60,7 +60,7 @@ export const NewServiceForm = (props) => {
 				<InputLabel htmlFor={'name'}>{'Nome do serviço'}</InputLabel>
 				<Input
 					onChange={(e) => {
-						name.current = e.target.value
+						setName(e.target.value);
 					}}
 					id={'name'}
 					fullWidth
@@ -71,7 +71,7 @@ export const NewServiceForm = (props) => {
 				<InputLabel htmlFor={'Descrição'}>{'Descrição'}</InputLabel>
 				<Input
 					onChange={(e) => {
-						description.current = e.target.value
+						setDescription(e.target.value);
 					}}
 					id={'Descrição'}
 					fullWidth
@@ -87,7 +87,7 @@ export const NewServiceForm = (props) => {
 				<InputLabel htmlFor='Valor'>{'Valor'}</InputLabel>
 				<Input
 					onChange={(e) => {
-						value.current = e.target.value
+						setValue(e.target.value);
 					}}
 					id={'Valor'}
 					fullWidth
@@ -97,7 +97,7 @@ export const NewServiceForm = (props) => {
 
 			<InputLabel>Categoria</InputLabel>
 
-			<Select value={category.current} onChange={(value) => (category.current = value)}>
+			<Select value={category} onChange={(value) => setCategory(value)}>
 				<MenuItem value={0}>Saúde</MenuItem>
 				<MenuItem value={1}>Construção</MenuItem>
 				<MenuItem value={2}>Música</MenuItem>
@@ -111,7 +111,7 @@ export const NewServiceForm = (props) => {
 				<Button
 					variant='contained'
 					onClick={() => {
-						props.onClose()
+						props.onClose();
 					}}
 				>
 					{' '}
@@ -119,5 +119,5 @@ export const NewServiceForm = (props) => {
 				</Button>
 			</Buttons>
 		</Box>
-	)
-}
+	);
+};

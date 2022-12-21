@@ -1,9 +1,9 @@
-import * as React from 'react'
-import styled from 'styled-components'
-import { FaStar } from 'react-icons/fa'
-import { ServiceCardDetails } from './serviceCardDetails'
-import { ConfirmPurchasePopup } from './confirmPurchasePopup'
-import { Button, Rating, Typography } from '@mui/material'
+import * as React from 'react';
+import styled from 'styled-components';
+import { FaStar } from 'react-icons/fa';
+import { ServiceCardDetails } from './serviceCardDetails';
+import { ConfirmPurchasePopup } from './confirmPurchasePopup';
+import { Button, Rating, Typography } from '@mui/material';
 
 const CardWrapper = styled.div`
     display:flex;
@@ -16,7 +16,7 @@ const CardWrapper = styled.div`
     border-left 20px solid red;
     cursor: ${(p) => (p.isDisabled ? undefined : 'pointer')};
 
-`
+`;
 
 const TitleField = styled.div`
 	display: flex;
@@ -25,30 +25,30 @@ const TitleField = styled.div`
 	font-weight: bold;
 	width: 100%;
 	justify-content: center;
-`
+`;
 
 const CategoryField = styled.div`
 	font-size: 15px;
 	align-self: flex-end;
 	margin-left: 50px;
 	font-weight: 400;
-`
+`;
 
 const DescriptionField = styled.div`
 	margin-top: 3%;
 	height: 50%;
 	overflow: hidden;
 	font-size: 20px;
-`
+`;
 
 const ValueField = styled.div`
 	margin-left: 2%;
-`
+`;
 
 export const ServiceCard = (props) => {
-	const [showDetails, setShowDetails] = React.useState(false)
+	const [showDetails, setShowDetails] = React.useState(false);
 
-	const evaluation = 5 //get para média de avaliações de um usuário
+	const evaluation = 5; //get para média de avaliações de um usuário
 
 	return (
 		<>
@@ -84,11 +84,11 @@ export const ServiceCard = (props) => {
 					value={props.value}
 					address={props.address}
 					onClose={() => {
-						setShowDetails(false)
+						setShowDetails(false);
 					}}
 					isSigned={props.isSigned}
 				/>
 			)}
 		</>
-	)
-}
+	);
+};

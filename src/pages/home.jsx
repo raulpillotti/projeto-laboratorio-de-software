@@ -1,7 +1,7 @@
-import axios from 'axios'
-import * as React from 'react'
-import styled from 'styled-components'
-import { ServiceCard } from '../components/serviceCard'
+import axios from 'axios';
+import * as React from 'react';
+import styled from 'styled-components';
+import { ServiceCard } from '../components/serviceCard';
 
 const Wrapper = styled.div`
   width:100%:
@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   display:flex;
   justify-content:center;
   overflow:auto;
-`
+`;
 
 const CardList = styled.div`
 	display: flex;
@@ -18,16 +18,18 @@ const CardList = styled.div`
 	flex-direction: column;
 	gap: 3%;
 	margin-top: 10%;
-`
+`;
 
 export const Home = (props) => {
-	const [services, setServices] = React.useState([])
+	const [services, setServices] = React.useState([]);
 
 	axios
 		.get('http://localhost:5000/servicos', { headers: { 'Access-Control-Allow-Origin': '*' } })
-		.then((r) => setServices(r.data.sort((a, b) => a.nomeServico.localeCompare(b.nomeServico))))
+		.then((r) =>
+			setServices(r.data.sort((a, b) => a.nomeServico.localeCompare(b.nomeServico))),
+		);
 
-	const { id } = React.useId()
+	const { id } = React.useId();
 
 	return (
 		<Wrapper>
@@ -43,5 +45,5 @@ export const Home = (props) => {
 				))}
 			</CardList>
 		</Wrapper>
-	)
-}
+	);
+};
